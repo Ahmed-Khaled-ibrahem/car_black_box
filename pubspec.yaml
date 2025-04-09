@@ -1,0 +1,95 @@
+name: car_black_box
+description: "A new Flutter project."
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.5.4
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^1.0.8
+  equatable: ^2.0.7
+  flutter_bloc: ^9.0.0
+  lottie: ^3.0.0
+  get_it: ^8.0.3
+  firebase_core: ^3.10.1
+  firebase_database: ^11.3.1
+  shared_preferences: ^2.5.1
+  firebase_auth: ^5.4.1
+  flutter_easyloading: ^3.0.5
+#  cached_network_image: ^3.4.1
+  http: ^0.13.1
+  flutter_vector_icons: ^2.0.0
+  maps_launcher: ^3.0.0+1
+  path_provider: ^2.1.5
+  dio: ^5.8.0+1
+  carousel_slider: ^5.0.0
+  dot_navigation_bar: ^1.0.2
+  image_picker: ^1.1.2
+  hive_flutter: ^1.1.0
+  hive: ^2.2.3
+  hive_generator: ^2.0.1
+  intl: ^0.18.0
+  url_launcher: ^6.3.1
+  animations: ^2.0.11
+  qr_flutter: ^4.1.0
+  flutter_map: ^4.0.0
+  latlong2: ^0.8.0
+  geolocator: ^13.0.2
+  geocoding: ^3.0.0
+  flutter_svg: ^2.0.4
+  video_player: ^2.9.3
+  permission_handler: ^11.4.0
+  device_info_plus: ^11.3.0
+  external_path: ^2.2.0
+  flutter_mjpeg: ^2.0.4
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^4.0.0
+  build_runner: ^2.4.13
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/
+    - assets/cars/
+
+
+  # An image asset can refer to one or more resolution-specific "variants", see
+  # https://flutter.dev/to/resolution-aware-images
+
+  # For details regarding adding assets from package dependencies, see
+  # https://flutter.dev/to/asset-from-package
+
+  # To add custom fonts to your application, add a fonts section here,
+  # in this "flutter" section. Each entry in this list should have a
+  # "family" key with the font family name, and a "fonts" key with a
+  # list giving the asset and other descriptors for the font. For
+  # example:
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
+  #
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/to/font-from-package
