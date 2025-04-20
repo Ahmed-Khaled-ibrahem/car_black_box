@@ -10,11 +10,8 @@ class EmergencyContact extends HiveObject {
   @HiveField(1)
   String phone;
 
-  @HiveField(2)
-  int iconCode; // Store icon as an integer
-
-  EmergencyContact({required this.name, required this.phone, required this.iconCode});
+  EmergencyContact({required this.name, required this.phone});
 
   // Helper method to get IconData from codePoint
-  IconData get icon => IconData(iconCode, fontFamily: 'MaterialIcons');
+  // IconData get icon => Icon(iconCode).icon;
 }

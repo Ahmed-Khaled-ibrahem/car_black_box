@@ -70,18 +70,18 @@ class _WeatherCardState extends State<WeatherCard> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.all(20),
+      margin: const EdgeInsets.all(10),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       elevation: 5,
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
-          gradient:  LinearGradient(
-            colors: [ const Color(0xFF7c55d4),  const Color(0xFF7c55d4).withGreen(130)], // Gradient colors
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          ),
-          color: Colors.red,
+          // gradient:  LinearGradient(
+          //   colors: [ const Color(0xFF7c55d4),  const Color(0xFF7c55d4).withGreen(130)], // Gradient colors
+          //   begin: Alignment.topLeft,
+          //   end: Alignment.bottomRight,
+          // ),
+          color: Colors.red.withOpacity(0.5),
         ),
         child: Padding(
           padding: const EdgeInsets.all(16),
@@ -96,34 +96,33 @@ class _WeatherCardState extends State<WeatherCard> {
                     style: const TextStyle(fontSize: 16),
                   ),
                   Text(
+                    "${temperature.toStringAsFixed(1)}°C",
+                    style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                  ),
+                  Text(
                     locationName,
                     style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
+                ],
+              ),
 
-                ],
-              ),
-              const SizedBox(height: 3),
-              Text(
-                "${temperature.toStringAsFixed(1)}°C",
-                style: const TextStyle(fontSize: 33, fontWeight: FontWeight.bold),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Column(
-                    children: [
-                      const Icon(Icons.air, size: 30),
-                      Text("${windSpeed.toStringAsFixed(1)} km/h"),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      const Icon(Icons.water_drop, size: 30),
-                      Text("$humidity% Humidity"),
-                    ],
-                  ),
-                ],
-              ),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              //   children: [
+              //     Column(
+              //       children: [
+              //         const Icon(Icons.air, size: 30),
+              //         Text("${windSpeed.toStringAsFixed(1)} km/h"),
+              //       ],
+              //     ),
+              //     Column(
+              //       children: [
+              //         const Icon(Icons.water_drop, size: 30),
+              //         Text("$humidity% Humidity"),
+              //       ],
+              //     ),
+              //   ],
+              // ),
             ],
           ),
         ),

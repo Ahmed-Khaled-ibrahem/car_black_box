@@ -1,4 +1,6 @@
+
 import 'package:car_black_box/controller/appCubit/app_cubit.dart';
+import 'package:car_black_box/services/firebase_real_time.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
@@ -18,6 +20,7 @@ class CarSpeedCard extends StatefulWidget {
 }
 
 class _CarSpeedCardState extends State<CarSpeedCard> {
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AppCubit, AppState>(
@@ -79,13 +82,16 @@ class _CarSpeedCardState extends State<CarSpeedCard> {
                                     builder: (context) =>
                                         ConfirmationDialog(
                                           title: 'Delete',
-                                          onConfirm: () {},
+                                          onConfirm: () {
+                                            getIt<FirebaseRealTimeDB>().deleteCar(c.id ?? '');
+                                          },
                                           message:
                                           'Are you sure you want to delete this car?',
                                         ),
                                   );
                                 },
-                                icon: const Icon(MaterialCommunityIcons.delete, color: Colors.amberAccent,),
+                                icon: const Icon(MaterialCommunityIcons.delete,
+                                  color: Colors.amberAccent,),
                               )
                             ]),
                          Row(
@@ -109,7 +115,7 @@ class _CarSpeedCardState extends State<CarSpeedCard> {
                                 size: 30, color: Colors.blue),
                             SizedBox(width: 8),
                             Text(
-                              'Cairo, Egypt',
+                              'جدة',
                               style: TextStyle(
                                   fontSize: 18, fontWeight: FontWeight.w500,color: Colors.white),
                             ),
@@ -133,8 +139,8 @@ class _CarSpeedCardState extends State<CarSpeedCard> {
           InkWell(
               onTap: () {
                 MapsLauncher.launchCoordinates(
-                    double.parse('30.0444'.toString()),
-                    double.parse('31.2357'.toString()));
+                    c.lat??0,
+                    c.lng??0,);
               },
               child: Container(
                 alignment: Alignment.bottomCenter,

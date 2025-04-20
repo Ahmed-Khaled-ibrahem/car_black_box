@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import '../../../controller/appCubit/app_cubit.dart';
+import '../../../models/car.dart';
+import '../../../services/get_it.dart';
 import '../../car_screens/car_information/car_information_screen.dart';
 import '../../car_screens/dash_cam_screen/dash_cam_screen.dart';
 import '../../car_screens/emergency/emergency_screen.dart';
@@ -8,18 +11,25 @@ import '../../car_screens/trip_details/trip_list_page.dart';
 import '../../home/weather_card.dart';
 
 class CarHome extends StatefulWidget {
-  const CarHome({super.key});
+  CarHome(this.car, {super.key});
+
+  final Car car;
 
   @override
   State<CarHome> createState() => _CarHomeState();
 }
 
 class _CarHomeState extends State<CarHome> {
+  final appCubit = getIt<AppCubit>();
+
   @override
   Widget build(BuildContext context) {
+    final double? lat = widget.car.lat ;
+    final double? lng = widget.car.lng ;
+
     return Column(
       children: [
-        const WeatherCard(lat: 30.0444, lon: 31.2357),
+         WeatherCard(lat: lat??0, lon: lng??0),
         Expanded(
           child: Padding(
             padding: const EdgeInsets.all(15),
@@ -27,8 +37,7 @@ class _CarHomeState extends State<CarHome> {
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2, childAspectRatio: 1.5),
               children: [
-                pageCard(TripListPage(), 'Trip Details',
-                    Icons.map_outlined),
+                pageCard(TripListPage(), 'Trip Details', Icons.map_outlined),
                 pageCard(const DashCamScreen(), 'Dash Cam',
                     Icons.camera_alt_outlined),
                 pageCard(CarInfoPage(), 'Car Information', Icons.info_outline),
@@ -53,19 +62,18 @@ class _CarHomeState extends State<CarHome> {
       },
       child: Card(
         margin: const EdgeInsets.all(10),
-        color: const Color(0xFF7c55d4),
+        color: const Color(0xFF7c55d4).withOpacity(0.1),
         elevation: 5,
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
-            gradient:  LinearGradient(
-              colors: [ const Color(0xFF7c55d4),  const Color(0xFF7c55d4).withGreen(130)], // Gradient colors
+            gradient: const LinearGradient(
+              colors: [Color(0xffaa8fe8), Color(0xff6340b2)], // Gradient colors
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
             color: Colors.red,
           ),
-
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,

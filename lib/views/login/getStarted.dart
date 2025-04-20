@@ -15,6 +15,13 @@ class _GetStartedState extends State<GetStarted> {
         body: Center(
       child:
           Column(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+            const Text(
+              'Welcome to',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 30),
           child: Hero(
@@ -25,27 +32,6 @@ class _GetStartedState extends State<GetStarted> {
               color: Colors.deepPurple.shade400,
             ),
           ),
-        ),
-        const Column(
-          children: [
-            Text(
-              'Welcome to',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w400,
-              ),
-            ),
-            Hero(
-              tag: 'text',
-              child: Text(
-                'Keeper',
-                style: TextStyle(
-                  fontSize: 60,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-          ],
         ),
         Hero(
           tag: 'button',

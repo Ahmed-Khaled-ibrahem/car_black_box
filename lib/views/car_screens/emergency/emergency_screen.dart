@@ -99,7 +99,7 @@ class _EmergencyCallPageState extends State<EmergencyCallPage> {
                   ),
                   closedColor: Colors.transparent,
                   closedBuilder: (context, openContainer) => ListTile(
-                    leading: Icon(IconData(contact.iconCode, fontFamily: 'MaterialIcons'), color: Colors.red),
+                    // leading: Icon(contact.icon, color: Colors.red),
                     title: Text(contact.name),
                     subtitle: Text(contact.phone),
                     trailing: Row(
@@ -155,7 +155,7 @@ class _EmergencyContactFormState extends State<EmergencyContactForm> {
     if (widget.contact != null) {
       nameController.text = widget.contact!.name;
       phoneController.text = widget.contact!.phone;
-      selectedIcon = widget.contact!.icon;
+      // selectedIcon = widget.contact!.icon;
     }
   }
 
@@ -164,7 +164,7 @@ class _EmergencyContactFormState extends State<EmergencyContactForm> {
       final newContact = EmergencyContact(
         name: nameController.text,
         phone: phoneController.text,
-        iconCode: selectedIcon.codePoint, // Save icon as codePoint
+        // iconCode: selectedIcon.codePoint, // Save icon as codePoint
       );
       widget.onSave(newContact);
       Navigator.pop(context);

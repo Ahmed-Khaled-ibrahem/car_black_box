@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-
 import '../../services/firebase_real_time.dart';
 import '../../services/get_it.dart';
 
@@ -25,28 +24,30 @@ class _SendSupportPageState extends State<SendSupportPage> {
         appBar: AppBar(
           title: const Text('Send Support'),
         ),
-        body:  Center(
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              children: [
-                TextFormField(
-                  controller: topicController,
-                  decoration: const InputDecoration(
-                    labelText: 'Topic',
-                    border: OutlineInputBorder(),
+        body:  SingleChildScrollView(
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                children: [
+                  TextFormField(
+                    controller: topicController,
+                    decoration: const InputDecoration(
+                      labelText: 'Topic',
+                      border: OutlineInputBorder(),
+                    ),
                   ),
-                ),
-                 const SizedBox(height: 16,),
-                TextFormField(
-                  controller: messageController,
-                  maxLines: 8,
-                  decoration:  const InputDecoration(
-                    labelText: 'Message',
-                    border: OutlineInputBorder(),
+                   const SizedBox(height: 16,),
+                  TextFormField(
+                    controller: messageController,
+                    maxLines: 8,
+                    decoration:  const InputDecoration(
+                      labelText: 'Message',
+                      border: OutlineInputBorder(),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

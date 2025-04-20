@@ -2,8 +2,6 @@
 import 'package:flutter/material.dart';
 
 
-
-
 class ConfirmationDialog extends StatelessWidget {
   final String title;
   final String message;
@@ -27,7 +25,10 @@ class ConfirmationDialog extends StatelessWidget {
           child: const Text('Cancel'),
         ),
         TextButton(
-          onPressed: onConfirm,
+          onPressed: (){
+            onConfirm();
+            Navigator.pop(context);
+          },
           child: const Text('Confirm'),
         ),
       ],

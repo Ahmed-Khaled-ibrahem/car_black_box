@@ -79,7 +79,6 @@ class _DeviceConfigurationScreenState extends State<DeviceConfigurationScreen> {
                   items: carColors.map((e) => Image.asset(e,fit: BoxFit.cover)).toList(),
                   options: CarouselOptions(
                     height: 200,
-                    // aspectRatio: 0.5,
                     viewportFraction: 0.65,
                     initialPage: 0,
                     enableInfiniteScroll: true,
@@ -90,7 +89,7 @@ class _DeviceConfigurationScreenState extends State<DeviceConfigurationScreen> {
                     autoPlayCurve: Curves.fastOutSlowIn,
                     enlargeCenterPage: true,
                     enlargeFactor: 0.1,
-                    onPageChanged: (val, re){selected = val;},
+                    onPageChanged: (val, re){selected = val; print(selected);},
                     scrollDirection: Axis.horizontal,
                   )
               ),

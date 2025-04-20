@@ -3,11 +3,11 @@ class Car{
   final String? model;
   final int? image;
   final String id;
-  final String? lat;
-  final String? lng;
+  final double? lat;
+  final double? lng;
   final String pass;
   final bool risk;
-  final int speed;
+  final double speed;
   final String? owners;
 
   Car({
@@ -24,16 +24,32 @@ class Car{
   });
 
   static fromJson(MapEntry entry) {
+    final gps = entry.value["gps"];
+    late double lat ;
+    late double lng ;
+    late double speed ;
+
+    if(gps == null) {
+      lat = 21.59462;
+      lng = 39.26642;
+      speed = 0;
+    }
+    else{
+       lat = gps["lat"];
+       lng = gps["lng"];
+       speed = gps["speed"] ?? 0;
+    }
+
     return Car(
       name: entry.value["name"],
       model: entry.value["model"],
       image: entry.value["image"],
       id: entry.key,
-      lat: entry.value["lat"],
-      lng: entry.value["lng"],
+      lat: lat,
+      lng: lng,
       pass: entry.value["pass"],
       risk: entry.value["risk"] ?? false,
-      speed: entry.value["speed"] ?? 0,
+      speed: speed,
       owners: entry.value["owners"],
     );
   }

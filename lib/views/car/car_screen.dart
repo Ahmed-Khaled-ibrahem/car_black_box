@@ -16,7 +16,12 @@ class CarScreen extends StatefulWidget {
 
 class _CarScreenState extends State<CarScreen> {
    int selectedTab = 0;
-   List tabs = [const CarHome(), const MapPage(), const RecordPage(), const FavouritePalcesScreen()];
+   List tabs = [];
+   @override
+  void initState() {
+    super.initState();
+    tabs = [ CarHome(widget.car), const MapPage(), const RecordPage(), const FavouritePalcesScreen()];
+  }
 
   @override
   Widget build(BuildContext context) {

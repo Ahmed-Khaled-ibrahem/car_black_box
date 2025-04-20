@@ -24,8 +24,8 @@ need to do : ✔️
 - profile page (name - number - email - image)  ✔️
 - navigation bar as image (home - map - performance - record - favorite places)  ✔️ 
 - support page ✔️
-- change logo ✔️
-- delete car card 
 - if admin user show support messages in drawer
 - when risk enabled call emergency or send sms
+- 3 تحليل الاداء صفحه 
+
 
