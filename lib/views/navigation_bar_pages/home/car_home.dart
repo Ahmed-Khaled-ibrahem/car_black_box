@@ -3,7 +3,7 @@ import '../../../controller/appCubit/app_cubit.dart';
 import '../../../models/car.dart';
 import '../../../services/get_it.dart';
 import '../../car_screens/car_information/car_information_screen.dart';
-import '../../car_screens/dash_cam_screen/dash_cam_screen.dart';
+import '../../car_screens/dash_cam_screen/video_list_page.dart';
 import '../../car_screens/emergency/emergency_screen.dart';
 import '../../car_screens/health_card/health_Card_screen.dart';
 import '../../car_screens/maintanance/maintainance_screen.dart';
@@ -29,7 +29,7 @@ class _CarHomeState extends State<CarHome> {
 
     return Column(
       children: [
-         WeatherCard(lat: lat??0, lon: lng??0),
+        WeatherCard(lat: lat??0, lon: lng??0),
         Expanded(
           child: Padding(
             padding: const EdgeInsets.all(15),
@@ -38,7 +38,7 @@ class _CarHomeState extends State<CarHome> {
                   crossAxisCount: 2, childAspectRatio: 1.5),
               children: [
                 pageCard(TripListPage(), 'Trip Details', Icons.map_outlined),
-                pageCard(const DashCamScreen(), 'Dash Cam',
+                pageCard( VideoListPage(widget.car), 'Dash Cam',
                     Icons.camera_alt_outlined),
                 pageCard(CarInfoPage(), 'Car Information', Icons.info_outline),
                 pageCard(CarHealthPage(), 'Health Card',

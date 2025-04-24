@@ -1,4 +1,3 @@
-
 import 'package:car_black_box/views/car_screens/car_information/plat_number_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
@@ -16,18 +15,19 @@ class _CarInfoPageState extends State<CarInfoPage> {
   final _profileBox = Hive.box<UserProfile>('profileBox');
 
   TextEditingController carNumberController = TextEditingController();
-  TextEditingController carModelController = TextEditingController();
+  // TextEditingController carModelController = TextEditingController();
   TextEditingController ownerNameController = TextEditingController();
   TextEditingController ownerPhoneController = TextEditingController();
   TextEditingController insuranceController = TextEditingController();
   String profileName = '';
   String profileNumber = '';
+  String? selectedCarBrand ;
 
   void _saveCar() {
     if (_formKey.currentState!.validate()) {
       final newCar = Car(
         carNumberController.text,
-        carModelController.text,
+        selectedCarBrand ?? '',
         ownerNameController.text,
         ownerPhoneController.text,
         insuranceController.text,
@@ -47,7 +47,7 @@ class _CarInfoPageState extends State<CarInfoPage> {
     final savedCar = _carBox.get('car_info');
     if (savedCar != null) {
       carNumberController.text = savedCar.carNumber;
-      carModelController.text = savedCar.carModel;
+      selectedCarBrand = savedCar.carModel == '' ? null : savedCar.carModel;
       ownerNameController.text = savedCar.ownerName;
       ownerPhoneController.text = savedCar.ownerPhone;
       insuranceController.text = savedCar.insuranceDetails;
@@ -88,16 +88,51 @@ class _CarInfoPageState extends State<CarInfoPage> {
                         border: OutlineInputBorder()),
                     // validator: (value) => value!.isEmpty ? 'Enter car number' : null,
                   ),
-                  const SizedBox(height: 10),
-                  TextFormField(
-                    controller: carModelController,
+                  const SizedBox(height: 20),
+                  // TextFormField(
+                  //   controller: carModelController,
+                  //   decoration: const InputDecoration(
+                  //       icon: Icon(Icons.car_rental),
+                  //       labelText: 'Car Model',
+                  //       hintText: 'Enter car model',
+                  //       border: OutlineInputBorder()),
+                  //   // validator: (value) => value!.isEmpty ? 'Enter car model' : null,
+                  // ),
+                  DropdownButtonFormField<String>(
+                    value: selectedCarBrand,
+                    onChanged: (val) {
+                      setState(() {
+                        selectedCarBrand = val ?? "Toyota";
+                      });
+                    },
+                    items: [
+                      'Toyota',
+                      'Ford',
+                      'Honda',
+                      'Nissan',
+                      'Volkswagen',
+                      'Chevrolet',
+                      'Hyundai',
+                      'Kia',
+                      'Mazda',
+                      'BMW'
+                    ].map<DropdownMenuItem<String>>((e) {
+                      return DropdownMenuItem<String>(
+                        value: e,
+                        child: Text(e),
+                      );
+                    }).toList(),
                     decoration: const InputDecoration(
-                        icon: Icon(Icons.car_rental),
-                        labelText: 'Car Model',
-                        hintText: 'Enter car model',
+                        icon: Icon(Icons.directions_car),
+                        labelText: 'Car Brand',
+                        hintText: 'Select car brand',
                         border: OutlineInputBorder()),
-                    // validator: (value) => value!.isEmpty ? 'Enter car model' : null,
+                    // validator: (value) => value == null ? 'Please select car brand' : null,
                   ),
+
+
+
+                  const SizedBox(height: 10),
                   const SizedBox(height: 10),
                   TextFormField(
                     controller: ownerNameController,

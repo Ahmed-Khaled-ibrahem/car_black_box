@@ -18,7 +18,7 @@ class _MyAppBarState extends State<MyAppBar> {
       backgroundColor: const Color(0xFFa587e9),
       foregroundColor: Colors.white,
       // title:  Text('Good morning keeper, ${userName?.displayName}', style: const TextStyle(fontSize: 16),),
-      title:  const Text('Good morning Keeper', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w900),),
+      title:  const Text('Good morning', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w900),),
     );
   }
 }

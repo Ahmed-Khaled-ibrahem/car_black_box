@@ -1,4 +1,6 @@
 import 'dart:io';
+import 'package:car_black_box/controller/appCubit/app_cubit.dart';
+import 'package:car_black_box/services/get_it.dart';
 import 'package:car_black_box/views/car_screens/dash_cam_screen/video_player_page.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:external_path/external_path.dart';
@@ -6,10 +8,13 @@ import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:http/http.dart' as http;
+import '../../../models/car.dart';
 
 class VideoListPage extends StatefulWidget {
+  VideoListPage(this.car, {super.key});
   @override
   _VideoListPageState createState() => _VideoListPageState();
+  Car car;
 }
 
 class _VideoListPageState extends State<VideoListPage> {
@@ -29,6 +34,7 @@ class _VideoListPageState extends State<VideoListPage> {
   @override
   void initState() {
     super.initState();
+    esp32Ip = widget.car.ip ?? "192.168.1.3";
     fetchVideos();
     _checkAndRequestPermission();
   }
@@ -278,14 +284,14 @@ class _VideoListPageState extends State<VideoListPage> {
         ],
       ),
       body: isLoading
-          ? const Center(child: Column(
+          ?  Center(child: Column(
         mainAxisAlignment:MainAxisAlignment.center,
             children: [
-              Text('Trying to fetch videos...'),
-              SizedBox(height: 10),
-              Text('Please make sure esp32 is connected to same network', textAlign: TextAlign.center,),
-              SizedBox(height: 20),
-              CircularProgressIndicator(),
+              Text('Trying to fetch videos...\non IP : $esp32Ip'),
+              const SizedBox(height: 10),
+              const Text('Please make sure esp32 is connected to same network', textAlign: TextAlign.center,),
+              const SizedBox(height: 20),
+              const CircularProgressIndicator(),
             ],
           ))
           : videos.isEmpty

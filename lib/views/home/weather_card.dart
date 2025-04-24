@@ -35,7 +35,7 @@ class _WeatherCardState extends State<WeatherCard> {
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
       setState(() {
-        locationName = data["address"]["city"] ?? data["address"]["town"] ?? "Unknown Location";
+        locationName = data["address"]["city"] ?? data["address"]["town"] ?? "Dahaban";
       });
     }
   }

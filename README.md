@@ -14,7 +14,7 @@ need to do : ✔️
 - Weather api Alerts    ✔️
 - main page as image    ✔️
 - trips details as image  ✔️
-- cam page (view - save - share)
+- cam page (view - save - share)   ✔️
 - car information page (filled by user) {car number - car model - car owner name - car owner phone - insurance details}  ✔️
 - car health page (filled by user) {name - age - blood type - diseases - medications}   ✔️
 - emergency call page {911 and can add more}   ✔️
@@ -25,7 +25,13 @@ need to do : ✔️
 - navigation bar as image (home - map - performance - record - favorite places)  ✔️ 
 - support page ✔️
 - if admin user show support messages in drawer
-- when risk enabled call emergency or send sms
+- when risk enabled call emergency or send sms ✔️
 - 3 تحليل الاداء صفحه 
+
+- esp number as barcode   ✔️
+- real car instead of color car  ✔️
+- car model (compo box)  ✔️
+- good morning keeper, name , with size   ✔️
+- send to SMS ✔️
 
 

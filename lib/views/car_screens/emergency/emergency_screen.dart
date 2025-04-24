@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:lottie/lottie.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../../../services/send_sms.dart';
 import 'emergency_contact.dart';
 
 class EmergencyCallPage extends StatefulWidget {
@@ -59,7 +60,6 @@ class _EmergencyCallPageState extends State<EmergencyCallPage> {
       ),
     );
   }
-
 
 
   @override
@@ -123,6 +123,10 @@ class _EmergencyCallPageState extends State<EmergencyCallPage> {
               },
             ),
           ),
+          TextButton(onPressed: (){
+            SendSms sendSms = SendSms();
+            sendSms.sendToContacts();
+          }, child: const Text('Test SMS'))
         ],
       ),
       floatingActionButton: FloatingActionButton(
@@ -170,9 +174,6 @@ class _EmergencyContactFormState extends State<EmergencyContactForm> {
       Navigator.pop(context);
     }
   }
-
-
-
 
   @override
   Widget build(BuildContext context) {

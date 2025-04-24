@@ -6,6 +6,7 @@ import 'package:car_black_box/views/car_screens/emergency/emergency_contact.dart
 import 'package:car_black_box/views/car_screens/health_card/car_health.dart';
 import 'package:car_black_box/views/car_screens/maintanance/car_maintenance.dart';
 import 'package:car_black_box/views/car_screens/trip_details/trip_model.dart';
+import 'package:car_black_box/views/navigation_bar_pages/favourite_palces/place.dart';
 import 'package:car_black_box/views/profile/user_profile.dart';
 import 'package:car_black_box/views/splash/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -14,11 +15,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'const/loading.dart';
+import 'controller/appCubit/app_cubit.dart';
 import 'controller/theme_bloc/theme_bloc.dart';
 import 'controller/theme_bloc/theme_state.dart';
 import 'const/firebase_options.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
 
@@ -34,6 +36,8 @@ void main() async{
   await Hive.openBox<EmergencyContact>('emergency_contacts');
   Hive.registerAdapter(TripModelAdapter());
   await Hive.openBox<TripModel>('trips');
+  Hive.registerAdapter(PlaceAdapter());
+  await Hive.openBox<Place>('favoritePlaces');
 
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -43,13 +47,17 @@ void main() async{
   ThemeService.getTheme();
   easyLoadingSetup();
   runApp(BlocProvider(
-    create: (context) => getIt<ThemeBloc>(),
-    child: const MyApp(),
+    create: (context) => getIt<AppCubit>(),
+    child: BlocProvider(
+      create: (context) => getIt<ThemeBloc>(),
+      child: const MyApp(),
+    ),
   ));
 }
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
   @override
   State<MyApp> createState() => _MyAppState();
 }

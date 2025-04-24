@@ -27,16 +27,12 @@ class _CarSpeedCardState extends State<CarSpeedCard> {
       builder: (context, state) {
         var allCars = getIt<AppCubit>().cars;
         String myID = getIt<FirebaseAuthRepo>().currentUser!.uid.toString();
-
         var myCars = allCars.where((element) {
           return element.owners?.contains(myID) ?? false;
         }).toList();
-
-
         if(myCars.isEmpty){
           return embtyCard();
         }
-
         return ListView(
           shrinkWrap: true,
           padding: const EdgeInsets.only(bottom: 300 ),
@@ -129,6 +125,7 @@ class _CarSpeedCardState extends State<CarSpeedCard> {
                     bottom: 0,
                     child: Transform.scale(
                         scale: 2.5,
+                        // child: Image.asset(carColors[1?? 0] ,
                         child: Image.asset(carColors[c.image ?? 0] ,
                             height: 70, width: 70)),
                   ),

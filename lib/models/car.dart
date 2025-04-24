@@ -9,6 +9,7 @@ class Car{
   final bool risk;
   final double speed;
   final String? owners;
+  final String? ip;
 
   Car({
     this.name,
@@ -20,7 +21,8 @@ class Car{
     this.pass = '',
     this.risk = false,
     this.speed = 0,
-    this.owners
+    this.owners,
+    this.ip
   });
 
   static fromJson(MapEntry entry) {
@@ -30,8 +32,8 @@ class Car{
     late double speed ;
 
     if(gps == null) {
-      lat = 21.59462;
-      lng = 39.26642;
+      lat = 22.059704;
+      lng = 39.302339;
       speed = 0;
     }
     else{
@@ -48,9 +50,10 @@ class Car{
       lat: lat,
       lng: lng,
       pass: entry.value["pass"],
-      risk: entry.value["risk"] ?? false,
+      risk: entry.value["risk"] == "1",
       speed: speed,
       owners: entry.value["owners"],
+      ip: entry.value["ip"],
     );
   }
 

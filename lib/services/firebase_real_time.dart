@@ -48,9 +48,10 @@ class FirebaseRealTimeDB {
   }
 
   void listenToChange() {
-    _database.child('cars').onValue.listen((event) {
+    _database.child('cars').onValue.listen((event) async {
       print('Data changed');
-      getIt<AppCubit>().readData();
+      await getIt<AppCubit>().readData();
+      getIt<AppCubit>().checkAlert();
     });
   }
 
@@ -74,6 +75,10 @@ class FirebaseRealTimeDB {
 // }
 //
   Future<void> deleteCar(String id) async {
-    await _database.child('cars').child(id).remove();
+    await _database.child('cars').child(id).child('owners').remove();
+  }
+
+  void setRiskToFalse(String id) async {
+    await _database.child('cars').child(id).update({'risk': '0'});
   }
 }

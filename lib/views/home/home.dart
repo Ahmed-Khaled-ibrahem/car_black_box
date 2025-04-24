@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:car_black_box/controller/appCubit/app_cubit.dart';
 import 'package:car_black_box/controller/theme_bloc/theme_state.dart';
 import 'package:flutter/material.dart';
@@ -23,79 +22,79 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
+
   @override
   void initState() {
     super.initState();
+    getIt<AppCubit>().init();
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => getIt<AppCubit>()..init(),
-      child: BlocBuilder<AppCubit, AppState>(
-        builder: (context, state) {
-          return Container(
-            color: Colors.white,
-            child: BlocBuilder<ThemeBloc, ThemeState>(
-              builder: (context, state) {
-                return Scaffold(
-                    backgroundColor: const Color(0xFFa587e9),
-                    drawer: const MyDrawer(),
-                    appBar: MyAppBar(),
-                    body: Stack(children: [
-                      Align(
-                        alignment: Alignment.topCenter,
-                        child: SizedBox(
-                          width: double.infinity,
-                          child: profileWidget(),
-                        ),
+    return BlocBuilder<AppCubit, AppState>(
+      builder: (context, state) {
+        return Container(
+          color: Colors.white,
+          child: BlocBuilder<ThemeBloc, ThemeState>(
+            builder: (context, state) {
+              return Scaffold(
+                  backgroundColor: const Color(0xFFa587e9),
+                  drawer: const MyDrawer(),
+                  appBar: MyAppBar(),
+                  body: Stack(children: [
+                    Align(
+                      alignment: Alignment.topCenter,
+                      child: SizedBox(
+                        width: double.infinity,
+                        child: profileWidget(),
                       ),
-                      Align(
-                        alignment: Alignment.bottomCenter,
-                        child: SizedBox(
-                          width: double.infinity,
-                          height: MediaQuery.of(context).size.height / 1.3,
-                          child: const Card(
-                            margin: EdgeInsets.all(0),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(50),
-                                  topRight: Radius.circular(50)),
-                            ),
-                            child: Column(
-                              children: [
-                                SizedBox(height: 20),
-                                Expanded(child: CarSpeedCard()),
-                              ],
-                            ),
+                    ),
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: SizedBox(
+                        width: double.infinity,
+                        height: MediaQuery.of(context).size.height / 1.3,
+                        child: const Card(
+                          margin: EdgeInsets.all(0),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(50),
+                                topRight: Radius.circular(50)),
+                          ),
+                          child: Column(
+                            children: [
+                              SizedBox(height: 20),
+                              Expanded(child: CarSpeedCard()),
+                            ],
                           ),
                         ),
                       ),
-                      Align(
-                        alignment: Alignment.bottomCenter,
-                        child: SizedBox(
-                          width: double.infinity,
-                          height: MediaQuery.of(context).size.height / 3.5,
-                          child: Card(
-                            color: state.isDark
-                                ? const Color(0xFF323031)
-                                : Colors.white,
-                            margin: const EdgeInsets.all(0),
-                            shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(50),
-                                  topRight: Radius.circular(50)),
-                            ),
-                            child: addDevice(context),
+                    ),
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: SizedBox(
+                        width: double.infinity,
+                        height: MediaQuery.of(context).size.height / 3.5,
+                        child: Card(
+                          color: state.isDark
+                              ? const Color(0xFF323031)
+                              : Colors.white,
+                          margin: const EdgeInsets.all(0),
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(50),
+                                topRight: Radius.circular(50)),
                           ),
+                          child: addDevice(context),
                         ),
-                      )
-                    ]));
-              },
-            ),
-          );
-        },
-      ),
+                      ),
+                    )
+                  ]));
+            },
+          ),
+        );
+      },
     );
   }
 
