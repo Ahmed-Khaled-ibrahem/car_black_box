@@ -54,6 +54,8 @@ dependencies:
   flutter_mjpeg: ^2.0.4
   qr_code_scanner_plus: ^2.0.10+1
   another_telephony: ^0.4.1
+  flutter_launcher_icons: ^0.14.3
+
 
 dev_dependencies:
   flutter_test:

@@ -81,4 +81,8 @@ class FirebaseRealTimeDB {
   void setRiskToFalse(String id) async {
     await _database.child('cars').child(id).update({'risk': '0'});
   }
+
+  void setRecord(String id,int val) async {
+    await _database.child('cars').child(id).update({'rec': val});
+  }
 }

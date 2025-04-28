@@ -88,22 +88,25 @@ class _WeatherCardState extends State<WeatherCard> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    getWeatherDescription(weatherCode),
-                    style: const TextStyle(fontSize: 16),
-                  ),
-                  Text(
-                    "${temperature.toStringAsFixed(1)}°C",
-                    style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-                  ),
-                  Text(
-                    locationName,
-                    style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
-                ],
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      getWeatherDescription(weatherCode),
+                      style: const TextStyle(fontSize: 16),
+                    ),
+                    Text(
+                      "${temperature.toStringAsFixed(1)}°C",
+                      style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      ' $locationName',
+                      style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
               ),
 
               // Row(

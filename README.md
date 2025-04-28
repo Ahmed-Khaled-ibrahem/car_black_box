@@ -33,5 +33,8 @@ need to do : ✔️
 - car model (compo box)  ✔️
 - good morning keeper, name , with size   ✔️
 - send to SMS ✔️
+- logo and name  ✔️
+- record ✔️
+- analytics page
 
 

@@ -21,11 +21,11 @@
     </queries>
 
     <application
-        android:label="car_black_box"
+        android:label="Keeper"
         android:requestLegacyExternalStorage="true"
         android:name="${applicationName}"
         android:usesCleartextTraffic="true"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
             android:exported="true"

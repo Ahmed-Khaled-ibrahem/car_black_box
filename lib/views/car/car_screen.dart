@@ -20,7 +20,7 @@ class _CarScreenState extends State<CarScreen> {
    @override
   void initState() {
     super.initState();
-    tabs = [ CarHome(widget.car),  MapPage(widget.car), const RecordPage(), const FavouritePalcesScreen()];
+    tabs = [ CarHome(widget.car),  MapPage(widget.car),  RecordPage(widget.car), const FavouritePalcesScreen()];
   }
 
   @override

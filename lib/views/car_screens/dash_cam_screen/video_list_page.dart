@@ -302,10 +302,13 @@ class _VideoListPageState extends State<VideoListPage> {
                     final video = videos[index];
                     final videoDate = video.split('_').first;
                     final videoTime = video.split('_').last.replaceAll('.avi', '').replaceAll('-', ':');
+                    final videoTimeDigit = videoTime.split(':')[0];
+                    int hour = int.parse(videoTimeDigit.split(':')[0]) + 3;
+                    final videoTimeEdit = '$hour:${videoTime.split(':')[1]}:${videoTime.split(':')[2]}' ; // Add 2 hours to videoTimeEdit
 
                     return ListTile(
                       title: Text(
-                        "Start Time: $videoTime",
+                        "Start Time: $videoTimeEdit",
                         style: const TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 14),
                       ),
